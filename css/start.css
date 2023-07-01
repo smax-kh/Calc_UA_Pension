@@ -41,7 +41,7 @@ display: block;
     box-shadow: 0 0 0 3px green, 0 0 53px #333; /* Параметры теней */
     cursor: pointer;
 }   
-#divpadding {
+.divpadding {
     padding: 5px;
     margin: auto;
 }
