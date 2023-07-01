@@ -9,3 +9,6 @@ function functionGo() { //скрыть блок iputInfo
    style1.display = "block";
    console.log(divInput1);
 }
+window.onload = function () {
+   console.log("Page loaded");
+ };
