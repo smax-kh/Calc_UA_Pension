@@ -6,10 +6,10 @@ h1{
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
 }
-.iputInfo { /* временный класс на время верстки */
+.iputInfo { /* visible first stage  */
 display: block;
 }
-.block_Calc {
+.block_Calc { /* visible second stage  */
     display: none;
 }
 .inputFild {
@@ -20,8 +20,8 @@ display: block;
 }
 .logoImg {
     display: flex;  
-    border-radius: 50%; /* Радиус скругления */
-    box-shadow: 0 0 0 3px green, 0 0 53px #333; /* Параметры теней */
+    border-radius: 50%; 
+    box-shadow: 0 0 0 3px green, 0 0 53px #333; 
     width: 10%;
     height: 10%;
     margin: auto;
@@ -38,7 +38,7 @@ display: block;
     width: max-content;
     border: solid green;
     border-radius: 20px;
-    box-shadow: 0 0 0 3px green, 0 0 53px #333; /* Параметры теней */
+    box-shadow: 0 0 0 3px green, 0 0 53px #333;
     cursor: pointer;
 }   
 .divpadding {
