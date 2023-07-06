@@ -12,16 +12,28 @@ display: block;
 .block_Calc { /* visible second stage  */
     display: none;
 }
+
 .inputFild {
-    margin: 5px;
+    width: 110px;
+    height: 45px; 
+    border-radius: 5px;
     color: #748361;
     border: 1px solid;
-    border-radius: 10px;
+
 }
+.inputFild:hover {
+    color: white;
+    background-color: #9daf84;
+    transition: 1s;
+    box-shadow:2px 2px 15px #333;
+    width: 115px;
+    height: 50px;
+}
+
 .logoImg {
     display: flex;  
     border-radius: 50%; 
-    box-shadow: 0 0 0 3px green, 0 0 53px #333; 
+    box-shadow: 0 0 0 10px green; 
     width: 10%;
     height: 10%;
     margin: auto;
@@ -71,4 +83,39 @@ display: block;
     height: 300px;
     text-align: center;
     color: black;
+}
+
+.inputBtnAnim {
+    position: relative;
+    width: 120px;
+    height: 52px; 
+    margin: 5px;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    justify-content: center;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+.inputBtnAnim::before {
+content: "";
+position: absolute;
+z-index: -1;
+width: 160px;
+height: 160px;
+background-repeat: no-repeat;
+background-position: 0px 0px, 80px 80px;
+background-size: 80px 80px, 160px 160px;
+background-image: linear-gradient(#9daf84, green), linear-gradient(black, #9daf84);
+
+animation: ramka_anim 4s linear infinite;
+}
+
+
+
+@keyframes ramka_anim {
+    100% {
+        transform: rotate(1turn);
+    }
 }
