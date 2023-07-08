@@ -9,7 +9,7 @@ h1{
 .iputInfo { /* visible first stage  */
 display: block;
 }
-.block_Calc { /* visible second stage  */
+.group_Block_Calc { /* visible second stage  */
     display: none;
 }
 
@@ -24,7 +24,7 @@ display: block;
 .inputFild:hover {
     color: white;
     background-color: #9daf84;
-    transition: 1s;
+    transition: 200ms;
     box-shadow:2px 2px 15px #333;
     width: 115px;
     height: 50px;
@@ -57,33 +57,6 @@ display: block;
     padding: 5px;
     margin: auto;
 }
-#lineCall {
-    display: flex;
-    margin-left: 50px;
-    margin-top: 1%;
-    margin-bottom: 1%;
-
-}
-#callNumber {
-    display: block;
-    padding-top: 150px;
-    background-color: white;
-    color: grey;
-    width: 80px;
-    height: 300px;
-    text-align: center;
-
-}
-#callData {
-    display: block;
-    padding-top: 150px;
-    background-color: #9daf84;
-    color: grey;
-    width: 300px;
-    height: 300px;
-    text-align: center;
-    color: black;
-}
 
 .inputBtnAnim {
     position: relative;
@@ -112,10 +85,73 @@ background-image: linear-gradient(#9daf84, green), linear-gradient(black, #9daf8
 animation: ramka_anim 4s linear infinite;
 }
 
-
-
 @keyframes ramka_anim {
     100% {
         transform: rotate(1turn);
     }
+}
+
+.tabCalc { 
+    position: relative;
+    background-color: #9daf84;
+    width: 40%;
+    height: 90px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 2.0em;
+    padding-top: 5px;
+    left: 50px;
+    top: 10px;
+    z-index: 1;
+    color: #ffffff;
+}
+.calcBlock {
+    background-color: #7dc914;
+    width: 50%;
+    min-height:400px;
+    border-radius: 10px;
+    padding-top: 10%;
+    z-index: -2;
+}
+
+.lineCall {   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgb(72, 17, 200);
+
+    margin-bottom: 10px;
+    align-items: center;
+}
+.callNumber {
+    display: table-cell;
+    background-color: antiquewhite;
+    width: 100px;
+    height: 100px;
+    vertical-align: middle;
+    text-align: center;
+}
+.callData { 
+    display: block;
+    background-color: brown;
+    width: 400px;
+    height: 100px;
+}
+.tabl {
+    display: table-row;
+}
+.line_top {
+    display: table-cell;
+    color: aqua;
+    text-align: left;
+}
+.line_bottom {
+    display: table-cell;
+    color: aquamarine;
+}
+.slider {
+    display: table-cell;
+}
+.input_cash {
+    display: table-cell;
 }

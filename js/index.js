@@ -4,7 +4,7 @@ function functionGo() { //скрыть блок iputInfo
    style.display = "none";
    console.log(divInput);
 
-   var divInput1 = document.getElementsByClassName ('block_Calc');
+   var divInput1 = document.getElementsByClassName ('group_Block_Calc');
    var style1 = divInput1[0].style;
    style1.display = "block";
    console.log(divInput1);
