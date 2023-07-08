@@ -1,69 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/start.css">
-  <script src="js/index.js"></script>
-  <link rel="icon" type="image/x-icon" href="img/logo.jpg">
-  <title>Calculator</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/start.css" />
+    <script src="js/index.js"></script>
+    <link rel="icon" type="image/x-icon" href="img/logo.jpg" />
+    <title>Calculator</title>
+  </head>
   <body>
-    <div class = "iputInfo">
-        <div class="logo"><img class="logoImg" src="img/logo.jpg" alt="Logo"></div>
-        <h1>Pension calculator</h1>
-        <div class="inputBlock">
-          
-                <div class = "divpadding">
-                  <title>Input Your Name</title>
-                  <input type="text" name="userName" placeholder="Your Name"/>
-                </div>
+    <div class="iputInfo">
+      <div class="logo">
+        <img class="logoImg" src="img/logo.jpg" alt="Logo" />
+      </div>
+      <h1>Pension calculator</h1>
+      <div class="inputBlock">
+        <div class="divpadding">
+          <title>Input Your Name</title>
+          <input type="text" name="userName" placeholder="Your Name" />
+        </div>
 
-                <div class = "divpadding">
-                  <label>Chose Sex:</label>
-                  <input type="radio" name="Sex" value="0" checked = true/> <span>Male</span> 
-                  <input type="radio" name="Sex" value="1"/> <span>Female</span>
-                </div>
+        <div class="divpadding">
+          <label>Chose Sex:</label>
+          <input type="radio" name="Sex" value="0" checked="true" />
+          <span>Male</span> <input type="radio" name="Sex" value="1" />
+          <span>Female</span>
+        </div>
 
-                <div class = "divpadding">
-                  <title>Input birth year</title>
-                  <input type="text" name="Year" placeholder="Input birth year " />
-                </div>
+        <div class="divpadding">
+          <title>Input birth year</title>
+          <input type="text" name="Year" placeholder="Input birth year " />
+        </div>
 
-                <div class = "divpadding">
-                  <title>From save your calc input email adres and send letter</title>
-                  <input type="email" name="email" placeholder="Your email" /> 
-                </div>
+        <div class="divpadding">
+          <title>From save your calc input email adres and send letter</title>
+          <input type="email" name="email" placeholder="Your email" />
+        </div>
 
-                <div class = "inputBtnAnim"> <input type="button" value="GO!" onclick="functionGo()" class="inputFild">
-                </div>
-
-          </div>
-    
+        <div class="inputBtnAnim">
+          <input
+            type="button"
+            value="GO!"
+            onclick="functionGo()"
+            class="inputFild"
+          />
+        </div>
+      </div>
     </div>
 
     <div class="group_Block_Calc">
-      <div class = "tabCalc" onclick="functionVisibleBlock()"><span>Calculate your future pension</span></div>
+      <div class="tabCalc" onclick="functionVisibleBlock()">
+        <span>Calculate your future pension</span>
+      </div>
       <div class="calcBlock">
-        <div class = "lineCall"> 
-          <div class = "callNumber">1</div> 
-          <div class = "callData">
+        <div class="lineCall">
+          <div class="callNumber">1</div>
+          <div class="callData">
             <div class="tabl">
-              <span class="line_top">Your salary</span> 
-              <input type="text" name="cash" placeholder="Input" class="input_cash" /> 
+              <span class="line_top">Your salary</span>
+              <input
+                type="text"
+                name="cash"
+                placeholder="Input"
+                class="input_cash"
+              />
             </div>
             <div class="tabl">
               <span class="line_bottom">$/m</span>
-              <input type="range" min="1" value="50" max="100" class="slider"> 
+              <input type="range" min="1" value="50" max="100" class="slider" />
             </div>
-            
           </div>
         </div>
-        <div class = "lineCall"> <div class = "callNumber">2</div> <div class = "callData"><span class="line_top">Pension age</span> <span class="line_bottom">year</span></div></div>
-        <div class = "lineCall"> <div class = "callNumber">3</div> <div class = "callData"><span class="line_top">Category</span></div></div>
+        <div class="lineCall">
+          <div class="callNumber">2</div>
+          <div class="callData">
+            <span class="line_top">Pension age</span>
+            <span class="line_bottom">year</span>
+          </div>
+        </div>
+        <div class="lineCall">
+          <div class="callNumber">3</div>
+          <div class="callData"><span class="line_top">Category</span></div>
+        </div>
       </div>
-
     </div>
-
   </body>
 </html>
