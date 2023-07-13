@@ -11,5 +11,38 @@ function functionGo() {
   console.log(divInput1);
 }
 window.onload = function () {
-  console.log("Page loaded");
+  yearCheck();
 };
+
+function emailCheck() {
+  let emailUser;
+}
+
+function nameParse() {
+  let nameUser;
+}
+
+function yearCheck() {
+  let yearUserInput = document.querySelectorAll("input");
+  console.log(yearUserInput[4]);
+  yearUserInput[3].onkeyup = function (event) {
+    if (event.key >= "0" && event.key <= "9") {
+      //filter of pressed key
+      console.log(yearUserInput[3].value);
+    } else {
+      let inputVal = yearUserInput[3].value;
+      this.value = inputVal.substring(0, inputVal.length - 1); // remove last element in string
+      console.log("-X-");
+    }
+
+    let inputYearUser = this.value;
+    if (inputYearUser.length <= 4) {
+      //check length of year
+      console.log("FiNAL = ", inputYearUser);
+    } else {
+      this.value = inputYearUser.substring(0, 4); // remove last symbol
+      inputYearUser = this.value;
+      console.log("Too many numbers = ", inputYearUser);
+    }
+  };
+}

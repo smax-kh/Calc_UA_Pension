@@ -15,14 +15,14 @@ h1 {
   display: none;
 }
 
-.inputFild {
+.inputFildButton {
   width: 110px;
   height: 45px;
   border-radius: 5px;
   color: #748361;
   border: 1px solid;
 }
-.inputFild:hover {
+.inputFildButton:hover {
   color: white;
   background-color: #9daf84;
   transition: 200ms;
@@ -42,7 +42,7 @@ h1 {
 .inputBlock {
   margin-left: auto;
   margin-right: auto;
-  padding: 1%;
+  padding: 2%;
   background-color: #9daf84;
   display: flex; /*in line*/
   flex-direction: column; /*in column*/
@@ -56,7 +56,21 @@ h1 {
 }
 .divpadding {
   padding: 5px;
-  margin: auto;
+}
+
+.inputField {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+.inputField:hover {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  border: 3px solid;
+  border-color: #7dc914;
 }
 
 .inputBtnAnim {
