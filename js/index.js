@@ -4,21 +4,17 @@ let inputEmailUser = "";
 let inputSex = 0;
 let inputArray;
 let messageOutput;
-function functionGo() {
-  //скрыть блок iputInfo
-  let divInput = document.getElementsByClassName("iputInfo");
-  let style = divInput[0].style;
-  style.display = "none";
-  console.log(divInput);
+function hideElementsOfFormsInput() {
+  document.getElementsByClassName("iputInfo")[0].classList.add("hide");
 
   let divInput1 = document.getElementsByClassName("group_Block_Calc");
   let style1 = divInput1[0].style;
   style1.display = "block";
   console.log(divInput1);
 }
+
 window.onload = function () {
   inputArray = document.querySelectorAll("input");
-  messageOutput = document.getElementById("massageError");
   yearCheck();
   emailCheck();
   nameParse();
@@ -31,21 +27,19 @@ function emailCheck() {
   inputArray[4].oninput = function (event) {
     let filter =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!filter.test(emailUser[4].value)) {
+    if (!filter.test(inputArray[4].value)) {
       console.log("Please provide a valid email address");
-      email.focus;
       email_flag = false;
     } else {
       email_flag = true;
     }
-
     if (!email_flag) {
       event.target.classList.add("inputRed");
-      messageOutput.innerText = "Email not valid!!!";
+      document.getElementById("massageErrorOfEmail").style.display = "block";
     } else {
       event.target.classList.remove("inputRed");
-      messageOutput.innerText = "Enter your data...";
       inputEmailUser = this.value;
+      document.getElementById("massageErrorofEmail").style.display = "none";
       console.log(inputEmailUser);
     }
     blockButton();
@@ -57,10 +51,10 @@ function nameParse() {
     this.value = this.value.replace(/[^A-Za-zА-Яа-я ]+/g, "");
     if (this.value.length > 0) {
       event.target.classList.remove("inputRed");
-      messageOutput.innerText = "Enter your data...";
+      document.getElementById("massageErrorofName").style.display = "none";
     } else {
       event.target.classList.add("inputRed");
-      messageOutput.innerText = "Name must contain only letters!!!";
+      document.getElementById("massageErrorofName").style.display = "block";
     }
     blockButton();
   };
@@ -68,21 +62,22 @@ function nameParse() {
 
 function yearCheck() {
   inputArray[3].oninput = function (event) {
-    this.value = yearUserInput[3].value.replace(/\D/, "");
-    let inputData = yearUserInput[3].value;
-    let count = inputData.length;
-    console.log(count);
-    if (count > 3) {
+    this.value = inputArray[3].value.replace(/\D/, "");
+    let inputData = inputArray[3].value;
+    if (inputData.length > 3) {
       console.log("Too LONG");
       this.value = inputData.substring(0, 4);
     }
     inputYearUser = this.value;
-    if (inputYearUser < 1940 || inputYearUser > new Date().getFullYear()) {
+    console.log(inputYearUser);
+
+    let dateNow = new Date().getFullYear();
+    if (inputYearUser < dateNow - 80 || inputYearUser > dateNow) {
       event.target.classList.add("inputRed");
-      messageOutput.innerText = "Year not valid!!!";
+      document.getElementById("massageErrorOfYear").style.display = "block";
     } else {
       event.target.classList.remove("inputRed");
-      messageOutput.innerText = "Enter your data...";
+      document.getElementById("massageErrorOfYear").style.display = "none";
     }
     blockButton();
   };

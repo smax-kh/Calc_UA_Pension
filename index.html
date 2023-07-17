@@ -24,6 +24,9 @@
             class="inputField"
           />
         </div>
+        <span class="massageOfError" id="massageErrorofName"
+          >Enter valid name!</span
+        >
 
         <div class="divpadding">
           <fieldset>
@@ -44,6 +47,9 @@
             id="yearUser"
           />
         </div>
+        <span class="massageOfError" id="massageErrorOfYear"
+          >Enter valid Year!</span
+        >
 
         <div class="divpadding">
           <title>From save your calc input email adres and send letter</title>
@@ -55,16 +61,18 @@
             id="email"
           />
         </div>
+        <span class="massageOfError" id="massageErrorOfEmail"
+          >Enter valid Email!</span
+        >
 
         <div class="inputBtnAnim">
           <input
             type="button"
             value="GO!"
-            onclick="functionGo()"
+            onclick="hideElementsOfFormsInput()"
             class="inputFildButton"
           />
         </div>
-        <span class="massageOfError" id="massageError">Enter your data...</span>
       </div>
     </div>
 
