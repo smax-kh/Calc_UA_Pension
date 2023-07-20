@@ -95,6 +95,20 @@ h1 {
   align-items: center;
   justify-content: center;
 }
+
+.inputBtnAnimDisabled {
+  position: relative;
+  width: 120px;
+  height: 52px;
+  margin: 5px;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: 5px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .inputBtnAnim::before {
   content: "";
   position: absolute;

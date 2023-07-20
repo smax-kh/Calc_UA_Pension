@@ -4,6 +4,9 @@ let inputEmailUser = "";
 let inputSex = 0;
 let inputArray;
 let messageOutput;
+let flagName = false;
+let flagYear = false;
+let flagEmail = false;
 function hideElementsOfFormsInput() {
   document.getElementsByClassName("iputInfo")[0].classList.add("hide");
 
@@ -23,25 +26,22 @@ window.onload = function () {
 };
 
 function emailCheck() {
-  let email_flag = false;
   inputArray[4].oninput = function (event) {
     let filter =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!filter.test(inputArray[4].value)) {
       console.log("Please provide a valid email address");
-      email_flag = false;
-    } else {
-      email_flag = true;
-    }
-    if (!email_flag) {
       event.target.classList.add("inputRed");
       document.getElementById("massageErrorOfEmail").style.display = "block";
+      flagEmail = false;
     } else {
       event.target.classList.remove("inputRed");
       inputEmailUser = this.value;
-      document.getElementById("massageErrorofEmail").style.display = "none";
+      document.getElementById("massageErrorOfEmail").style.display = "none";
       console.log(inputEmailUser);
+      flagEmail = true;
     }
+
     blockButton();
   };
 }
@@ -52,9 +52,11 @@ function nameParse() {
     if (this.value.length > 0) {
       event.target.classList.remove("inputRed");
       document.getElementById("massageErrorofName").style.display = "none";
+      flagName = true;
     } else {
       event.target.classList.add("inputRed");
       document.getElementById("massageErrorofName").style.display = "block";
+      flagName = false;
     }
     blockButton();
   };
@@ -75,9 +77,11 @@ function yearCheck() {
     if (inputYearUser < dateNow - 80 || inputYearUser > dateNow) {
       event.target.classList.add("inputRed");
       document.getElementById("massageErrorOfYear").style.display = "block";
+      flagYear = false;
     } else {
       event.target.classList.remove("inputRed");
       document.getElementById("massageErrorOfYear").style.display = "none";
+      flagYear = true;
     }
     blockButton();
   };
@@ -103,9 +107,24 @@ function sexCheck() {
 
 function blockButton() {
   let btn = document.getElementsByClassName("inputFildButton");
-  if (inputYearUser === 0 || inputNameUser === "" || inputEmailUser === "") {
-    // btn[0].disabled = true;
+  console.log(flagName, flagYear, flagEmail);
+  console.log(btn);
+  if (btn[0].disabled == false) {
+    // BTN active
+    if (flagName) {
+      // will be added flag for Year and Email
+      // check with flag if activ and flag true  then will disable
+      console.log("BTN -0FF");
+      btn[0].disabled = true;
+      document
+        .getElementsByClassName("inputBtnAnim")[0]
+        .classList.remove("inputBtnAnim");
+      btn[0].classList.remove("inputFildButton");
+    }
   } else {
-    // btn[0].disabled = false;
+    if (!flagName) {
+      console.log("BTN -0N");
+      btn[0].disabled = false;
+    }
   }
 }
