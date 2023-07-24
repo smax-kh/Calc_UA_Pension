@@ -7,9 +7,9 @@ let messageOutput;
 let flagName = false;
 let flagYear = false;
 let flagEmail = false;
+let flagButtonHide = false;
 function hideElementsOfFormsInput() {
   document.getElementsByClassName("iputInfo")[0].classList.add("hide");
-
   let divInput1 = document.getElementsByClassName("group_Block_Calc");
   let style1 = divInput1[0].style;
   style1.display = "block";
@@ -106,25 +106,13 @@ function sexCheck() {
 }
 
 function blockButton() {
-  let btn = document.getElementsByClassName("inputFildButton");
-  console.log(flagName, flagYear, flagEmail);
-  console.log(btn);
-  if (btn[0].disabled == false) {
-    // BTN active
-    if (flagName) {
-      // will be added flag for Year and Email
-      // check with flag if activ and flag true  then will disable
-      console.log("BTN -0FF");
-      btn[0].disabled = true;
-      document
-        .getElementsByClassName("inputBtnAnim")[0]
-        .classList.remove("inputBtnAnim");
-      btn[0].classList.remove("inputFildButton");
-    }
+  let btn = document.querySelector(".inputFildButton");
+  let divBtn = document.querySelector(".inputBtnAnim");
+  if (flagName && flagYear && flagEmail) {
+    btn.style.display = "block";
+    divBtn.style.display = "flex";
   } else {
-    if (!flagName) {
-      console.log("BTN -0N");
-      btn[0].disabled = false;
-    }
+    btn.style.display = "none";
+    divBtn.style.display = "none";
   }
 }
