@@ -9,11 +9,11 @@ let flagYear = false;
 let flagEmail = false;
 let flagButtonHide = false;
 function hideElementsOfFormsInput() {
-  document.getElementsByClassName("iputInfo")[0].classList.add("hide");
-  let divInput1 = document.getElementsByClassName("group_Block_Calc");
-  let style1 = divInput1[0].style;
-  style1.display = "block";
-  console.log(divInput1);
+  let firstPartHide = document.getElementsByClassName("iputInfo")[0];
+  firstPartHide.classList.add("hide");
+  let secondPartActivate = document.querySelectorAll(".hide");
+  console.log(secondPartActivate);
+  secondPartActivate[1].classList.add("group_Block_Calc_Active");
 }
 
 window.onload = function () {

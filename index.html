@@ -9,6 +9,12 @@
     <title>Calculator</title>
   </head>
   <body>
+    <noscript>
+      <strong>
+        Sorry. But calc doesn't work properly without JavaScript enabled. Please
+        enable it to continue.
+      </strong>
+    </noscript>
     <div class="iputInfo">
       <div class="logo">
         <img class="logoImg" src="img/logo.jpg" alt="Logo" />
@@ -71,31 +77,92 @@
             type="button"
             value="GO!"
             onclick="hideElementsOfFormsInput()"
+            id="btn1"
           />
         </div>
       </div>
     </div>
 
-    <div class="group_Block_Calc">
-      <div class="tabCalc" onclick="functionVisibleBlock()">
-        <span>Calculate your future pension</span>
+    <div class="hide">
+      <div class="tabNameCalc">
+        <button id="btn2" type="button" value="0" class="btnActive">
+          Calculate your future pension
+        </button>
+        <button id="btn3" type="button" value="0" class="btnNotActive">
+          Calculate your alternative earnings
+        </button>
       </div>
-      <div class="calcBlock">
-        <div class="lineCall">
-          <div class="callNumber">1</div>
-          <div class="callData">
-            <div class="tabl">
-              <span class="line_top">Your salary</span>
-              <input
-                type="text"
-                name="cash"
-                placeholder="Input"
-                class="input_cash"
-              />
+      <div class="blockWithParam">
+        <div class="tableColumn">
+          <div class="rowElement">
+            <span class="numberDiv">1</span>
+            <div class="textRow">
+              <span class="textLine1"><b>Your salary</b></span>
+              <span class="textLine2">grn/mounts</span>
             </div>
-            <div class="tabl">
-              <span class="line_bottom">$/m</span>
-              <input type="range" min="1" value="50" max="100" class="slider" />
+            <div class="sliderInputRow">
+              <div class="inputWithCounter">
+                <input type="text" value="55" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+              </div>
+              <div class="slidecontainer">
+                <input
+                  type="range"
+                  min="1"
+                  max="100"
+                  value="50"
+                  class="slider"
+                  id="myRange"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="rowElement">
+            <span class="numberDiv">2</span>
+            <div class="textRow">
+              <span class="textLine1"><b>At what age do you retire?</b></span>
+              <span class="textLine2">years</span>
+            </div>
+            <div class="sliderInputRow">
+              <div class="inputWithCounter">
+                <input type="text" value="55" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+              </div>
+              <div class="slidecontainer">
+                <input
+                  type="range"
+                  min="1"
+                  max="100"
+                  value="50"
+                  class="slider"
+                  id="myRange"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="rowElement">
+            <span class="numberDiv">3</span>
+            <div class="textRow">
+              <span class="textLine1"><b>Your category</b></span>
+            </div>
+            <div class="sliderInputRow">
+              <div class="inputWithCounter">
+                <input type="text" value="55" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tableColumnRight">
+          <div class="rowElement">
+            <div class="textRowResultStatic">
+              <span class="textLine1"><b>Your pension will be</b></span>
+              <span class="textLine1"><b> VALUE</b></span>
             </div>
           </div>
         </div>

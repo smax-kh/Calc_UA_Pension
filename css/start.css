@@ -10,10 +10,7 @@ h1 {
   /* visible first stage  */
   display: block;
 }
-.group_Block_Calc {
-  /* visible second stage  */
-  display: none;
-}
+
 .hide {
   display: none;
 }
@@ -116,73 +113,127 @@ h1 {
   }
 }
 
-.tabCalc {
-  position: relative;
-  background-color: #9daf84;
-  width: 40%;
-  height: 90px;
-  text-align: center;
-  border-radius: 10px;
-  font-size: 2em;
-  padding-top: 5px;
-  left: 50px;
-  top: 10px;
-  z-index: 1;
-  color: #ffffff;
-}
-.calcBlock {
-  background-color: #5014c9;
-  width: 50%;
-  min-height: 400px;
-  border-radius: 10px;
-  padding-top: 10%;
-  z-index: -2;
-}
-
-.lineCall {
-  display: block;
-  flex-wrap: wrap;
-  justify-content: center;
-  background-color: rgb(72, 17, 200);
-  margin-bottom: 10px;
-  align-items: center;
-}
-.callNumber {
-  display: inline-block;
-  background-color: antiquewhite;
-  width: 100px;
-  height: 100px;
-  vertical-align: middle;
-  text-align: center;
-}
-.callData {
-  display: inline-block;
-  background-color: brown;
-  width: 400px;
-  height: 100px;
-}
-.tabl {
-  display: table-row;
-}
-.line_top {
-  display: table-cell;
-  color: aqua;
-  text-align: left;
-}
-.line_bottom {
-  display: table-cell;
-  color: aquamarine;
-}
-.slider {
-  display: table-cell;
-}
-.input_cash {
-  display: table-cell;
-}
-
 .massageOfError {
   font-size: 0.8em;
-  color: rgb(0, 255, 255);
-  text-shadow: 2px 1px 8px rgb(215, 107, 12);
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 1px 4px rgb(171, 1, 1);
   display: none;
+}
+
+.group_Block_Calc_Active {
+  display: block;
+  position: absolute;
+  min-width: 350px;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  z-index: -4;
+}
+.tabNameCalc {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 100px;
+  background: white;
+  border-radius: 15px 15px 0 0;
+  border-color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btnActive {
+  display: block;
+  width: 50%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 15px 0 0 0;
+  color: #748361;
+  font-family: "Courier New", Courier, monospace;
+}
+.btnNotActive {
+  display: block;
+  width: 50%;
+  height: 100%;
+  color: #ffffff;
+  background-color: #6e6799;
+  border-radius: 0 15px 0 0;
+  font-family: "Courier New", Courier, monospace;
+}
+.blockWithParam {
+  display: flex;
+  position: relative;
+  gap: 10px;
+  height: 100%;
+  width: 100%;
+  background-color: #f7fffb;
+  z-index: -1;
+}
+
+.tableColumn {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 20px;
+  width: 50%;
+}
+.rowElement {
+  display: flex;
+  justify-content: left;
+}
+.numberDiv {
+  display: flex;
+  width: calc(100% / 6);
+  height: 100px;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  color: white;
+  background-color: #748361;
+
+  justify-content: center;
+  align-items: center;
+}
+.textRow {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  width: calc(100% / 3);
+  position: relative;
+  top: 10px;
+  color: white;
+  background-color: #4c5540;
+  justify-content: center;
+  align-items: center;
+}
+.sliderInputRow {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  width: calc(100% - 100% / 6 - 100% / 3);
+  position: relative;
+  top: 10px;
+  color: white;
+  background-color: #4c5540;
+  justify-content: center;
+  align-items: center;
+}
+.tableColumnRight {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 20px;
+  width: 50%;
+}
+.textRowResultStatic {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  width: 100%;
+  position: relative;
+  top: 10px;
+  color: white;
+  background-color: #4c5540;
+  justify-content: center;
+  align-items: center;
 }
