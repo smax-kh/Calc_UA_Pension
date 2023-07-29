@@ -4,16 +4,11 @@ let inputEmailUser = "";
 let inputSex = 0;
 let inputArray;
 let messageOutput;
-let flagName = false;
-let flagYear = false;
-let flagEmail = false;
 let flagButtonHide = false;
-function hideElementsOfFormsInput() {
-  let firstPartHide = document.getElementsByClassName("iputInfo")[0];
-  firstPartHide.classList.add("hide");
-  let secondPartActivate = document.querySelectorAll(".hide");
-  console.log(secondPartActivate);
-  secondPartActivate[1].classList.add("group_Block_Calc_Active");
+
+function inputConteinerHide() {
+  document.querySelector(".inputConteiner").classList.add("hide");
+  document.querySelector(".CalcConteiner").classList.remove("hide");
 }
 
 window.onload = function () {
@@ -32,14 +27,12 @@ function emailCheck() {
     if (!filter.test(inputArray[4].value)) {
       console.log("Please provide a valid email address");
       event.target.classList.add("inputRed");
-      document.getElementById("massageErrorOfEmail").style.display = "block";
-      flagEmail = false;
+      showError(event.target.parentNode);
     } else {
       event.target.classList.remove("inputRed");
       inputEmailUser = this.value;
-      document.getElementById("massageErrorOfEmail").style.display = "none";
+      hideError(event.target.parentNode);
       console.log(inputEmailUser);
-      flagEmail = true;
     }
 
     blockButton();
@@ -51,12 +44,11 @@ function nameParse() {
     this.value = this.value.replace(/[^A-Za-zА-Яа-я ]+/g, "");
     if (this.value.length > 0) {
       event.target.classList.remove("inputRed");
-      document.getElementById("massageErrorofName").style.display = "none";
-      flagName = true;
+      hideError(event.target.parentNode);
+      inputNameUser = this.value;
     } else {
       event.target.classList.add("inputRed");
-      document.getElementById("massageErrorofName").style.display = "block";
-      flagName = false;
+      showError(event.target.parentNode);
     }
     blockButton();
   };
@@ -76,12 +68,10 @@ function yearCheck() {
     let dateNow = new Date().getFullYear();
     if (inputYearUser < dateNow - 80 || inputYearUser > dateNow) {
       event.target.classList.add("inputRed");
-      document.getElementById("massageErrorOfYear").style.display = "block";
-      flagYear = false;
+      showError(event.target.parentNode);
     } else {
       event.target.classList.remove("inputRed");
-      document.getElementById("massageErrorOfYear").style.display = "none";
-      flagYear = true;
+      hideError(event.target.parentNode);
     }
     blockButton();
   };
@@ -108,11 +98,27 @@ function sexCheck() {
 function blockButton() {
   let btn = document.querySelector(".inputFildButton");
   let divBtn = document.querySelector(".inputBtnAnim");
-  if (flagName && flagYear && flagEmail) {
+  let divMessage = document.querySelector(".textInsteadOfButton");
+  if (
+    document.querySelectorAll(".massageOfError.hide").length === 3 &&
+    inputYearUser > 0 &&
+    inputEmailUser.length > 0 &&
+    inputNameUser.length > 0
+  ) {
     btn.style.display = "block";
     divBtn.style.display = "flex";
+    hideError(divMessage);
   } else {
-    //btn.style.display = "none";
-    //divBtn.style.display = "none";
+    btn.style.display = "none";
+    divBtn.style.display = "none";
+    showError(divMessage);
   }
+}
+
+function showError(el) {
+  el.querySelector(".massageOfError").classList.remove("hide");
+}
+
+function hideError(el) {
+  el.querySelector(".massageOfError").classList.add("hide");
 }

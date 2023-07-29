@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="css/start.css" />
     <script src="js/index.js"></script>
     <link rel="icon" type="image/x-icon" href="img/logo.jpg" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Calculator</title>
   </head>
   <body>
@@ -15,13 +19,13 @@
         enable it to continue.
       </strong>
     </noscript>
-    <div class="iputInfo">
+    <div class="inputConteiner">
       <div class="logo">
         <img class="logoImg" src="img/logo.jpg" alt="Logo" />
       </div>
       <h1>Pension calculator</h1>
       <div class="inputBlock">
-        <div class="divpadding">
+        <div class="divpadding nameConteiner">
           <title>Input Your Name</title>
           <input
             type="text"
@@ -29,12 +33,10 @@
             placeholder="Your Name"
             class="inputField"
           />
+          <span class="massageOfError hide"> Enter valid name! </span>
         </div>
-        <span class="massageOfError" id="massageErrorofName"
-          >Enter valid name!</span
-        >
 
-        <div class="divpadding">
+        <div class="divpadding radioButtonSex">
           <fieldset>
             <label>Chose Sex:</label>
             <input type="radio" name="Sex" value="0" checked="true" />
@@ -43,7 +45,7 @@
           </fieldset>
         </div>
 
-        <div class="divpadding">
+        <div class="divpadding yearConteiner">
           <title>Input birth year</title>
           <input
             type="text"
@@ -52,12 +54,10 @@
             class="inputField"
             id="yearUser"
           />
+          <span class="massageOfError hide"> Enter valid Year! </span>
         </div>
-        <span class="massageOfError" id="massageErrorOfYear"
-          >Enter valid Year!</span
-        >
 
-        <div class="divpadding">
+        <div class="divpadding emailContainer">
           <title>From save your calc input email adres and send letter</title>
           <input
             type="email"
@@ -66,24 +66,29 @@
             class="inputField"
             id="email"
           />
+          <span class="massageOfError hide"> Enter valid Email! </span>
         </div>
-        <span class="massageOfError" id="massageErrorOfEmail"
-          >Enter valid Email!</span
-        >
 
         <div class="inputBtnAnim">
           <input
             class="inputFildButton"
             type="button"
             value="GO!"
-            onclick="hideElementsOfFormsInput()"
+            onclick="inputConteinerHide()"
             id="btn1"
           />
         </div>
+        <div class="textInsteadOfButton">
+          <span class="massageOfError hide"> Enter DATA! </span>
+        </div>
       </div>
+
+      <i class="fa fa-car"></i>
+      <i class="fa fa-car" style="font-size: 48px"></i>
+      <i class="fa fa-car" style="font-size: 60px; color: red"></i>
     </div>
 
-    <div class="hide">
+    <div class="CalcConteiner hide">
       <div class="tabNameCalc">
         <button id="btn2" type="button" value="0" class="btnActive">
           Calculate your future pension

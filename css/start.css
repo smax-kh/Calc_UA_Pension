@@ -6,10 +6,6 @@ h1 {
   font-family: "Courier New", Courier, monospace;
   text-align: center;
 }
-.iputInfo {
-  /* visible first stage  */
-  display: block;
-}
 
 .hide {
   display: none;
@@ -117,11 +113,9 @@ h1 {
   font-size: 0.8em;
   color: rgb(255, 255, 255);
   text-shadow: 2px 1px 4px rgb(171, 1, 1);
-  display: none;
 }
 
-.group_Block_Calc_Active {
-  display: block;
+.CalcConteiner {
   position: absolute;
   left: 0px;
   min-width: 350px;
