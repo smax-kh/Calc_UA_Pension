@@ -112,7 +112,7 @@ function blockButton() {
     btn.style.display = "block";
     divBtn.style.display = "flex";
   } else {
-    btn.style.display = "none";
-    divBtn.style.display = "none";
+    //btn.style.display = "none";
+    //divBtn.style.display = "none";
   }
 }

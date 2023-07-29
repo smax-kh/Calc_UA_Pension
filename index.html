@@ -103,10 +103,12 @@
             <div class="sliderInputRow">
               <div class="inputWithCounter">
                 <input type="text" value="55" />
-                <img src="" alt="" />
-                <img src="" alt="" />
+                <div class="counterButton">
+                  <button>+</button>
+                  <button>-</button>
+                </div>
               </div>
-              <div class="slidecontainer">
+              <div class="sliderContainer">
                 <input
                   type="range"
                   min="1"
@@ -128,10 +130,12 @@
             <div class="sliderInputRow">
               <div class="inputWithCounter">
                 <input type="text" value="55" />
-                <img src="" alt="" />
-                <img src="" alt="" />
+                <div class="counterButton">
+                  <button>+</button>
+                  <button>-</button>
+                </div>
               </div>
-              <div class="slidecontainer">
+              <div class="sliderContainer">
                 <input
                   type="range"
                   min="1"
@@ -149,11 +153,29 @@
             <div class="textRow">
               <span class="textLine1"><b>Your category</b></span>
             </div>
-            <div class="sliderInputRow">
-              <div class="inputWithCounter">
-                <input type="text" value="55" />
-                <img src="" alt="" />
-                <img src="" alt="" />
+            <div class="radioContainer">
+              <div>
+                <input
+                  type="radio"
+                  name="Profession"
+                  value="0"
+                  checked="true"
+                />
+                <span>Default</span>
+                <input type="radio" name="Profession" value="1" />
+                <span>Judge</span>
+              </div>
+              <div>
+                <input type="radio" name="Profession" value="2" />
+                <span>Entrepreneur</span>
+                <input type="radio" name="Profession" value="3" />
+                <span>Military</span>
+              </div>
+              <div>
+                <input type="radio" name="Profession" value="4" />
+                <span>State employee</span>
+                <input type="radio" name="Profession" value="5" />
+                <span>Miner</span>
               </div>
             </div>
           </div>
