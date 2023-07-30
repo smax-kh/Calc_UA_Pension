@@ -10,7 +10,6 @@ h1 {
 .hide {
   display: none;
 }
-
 .inputFildButton {
   width: 110px;
   height: 45px;
@@ -51,19 +50,23 @@ h1 {
   cursor: pointer;
 }
 .divpadding {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 5px;
 }
 
-.inputField {
+.iconInputContainer {
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputField {
   width: 90%;
 }
 .inputField:hover {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
   width: 100%;
   border: 3px solid;
   border-color: #7dc914;

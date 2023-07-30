@@ -20,63 +20,22 @@ window.onload = function () {
   blockButton();
 };
 
-function emailCheck() {
-  inputArray[4].oninput = function (event) {
-    let filter =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!filter.test(inputArray[4].value)) {
-      console.log("Please provide a valid email address");
-      event.target.classList.add("inputRed");
-      showError(event.target.parentNode);
-    } else {
-      event.target.classList.remove("inputRed");
-      inputEmailUser = this.value;
-      hideError(event.target.parentNode);
-      console.log(inputEmailUser);
-    }
-
-    blockButton();
-  };
-}
-
 function nameParse() {
   inputArray[0].oninput = function (event) {
     this.value = this.value.replace(/[^A-Za-zА-Яа-я ]+/g, "");
     if (this.value.length > 0) {
       event.target.classList.remove("inputRed");
-      hideError(event.target.parentNode);
+      hideError(event.target.parentNode.parentNode);
       inputNameUser = this.value;
+      showCheckIcon(event.target.parentNode, true);
     } else {
       event.target.classList.add("inputRed");
-      showError(event.target.parentNode);
+      showError(event.target.parentNode.parentNode);
+      showCheckIcon(event.target.parentNode, false);
     }
     blockButton();
   };
 }
-
-function yearCheck() {
-  inputArray[3].oninput = function (event) {
-    this.value = inputArray[3].value.replace(/\D/, "");
-    let inputData = inputArray[3].value;
-    if (inputData.length > 3) {
-      console.log("Too LONG");
-      this.value = inputData.substring(0, 4);
-    }
-    inputYearUser = this.value;
-    console.log(inputYearUser);
-
-    let dateNow = new Date().getFullYear();
-    if (inputYearUser < dateNow - 80 || inputYearUser > dateNow) {
-      event.target.classList.add("inputRed");
-      showError(event.target.parentNode);
-    } else {
-      event.target.classList.remove("inputRed");
-      hideError(event.target.parentNode);
-    }
-    blockButton();
-  };
-}
-
 function sexCheck() {
   let sexRB = document.querySelector("fieldset");
   sexRB.addEventListener(
@@ -93,6 +52,52 @@ function sexCheck() {
     },
     false
   );
+}
+
+function yearCheck() {
+  inputArray[3].oninput = function (event) {
+    this.value = inputArray[3].value.replace(/\D/, "");
+    let inputData = inputArray[3].value;
+    if (inputData.length > 3) {
+      console.log("Too LONG");
+      this.value = inputData.substring(0, 4);
+    }
+    inputYearUser = this.value;
+    console.log(inputYearUser);
+
+    let dateNow = new Date().getFullYear();
+    if (inputYearUser < dateNow - 80 || inputYearUser > dateNow) {
+      event.target.classList.add("inputRed");
+      showError(event.target.parentNode.parentNode);
+      showCheckIcon(event.target.parentNode, false);
+    } else {
+      event.target.classList.remove("inputRed");
+      hideError(event.target.parentNode.parentNode);
+      showCheckIcon(event.target.parentNode, true);
+    }
+    blockButton();
+  };
+}
+
+function emailCheck() {
+  inputArray[4].oninput = function (event) {
+    let filter =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!filter.test(inputArray[4].value)) {
+      console.log("Please provide a valid email address");
+      event.target.classList.add("inputRed");
+      showError(event.target.parentNode.parentNode);
+      showCheckIcon(event.target.parentNode, false);
+    } else {
+      event.target.classList.remove("inputRed");
+      inputEmailUser = this.value;
+      hideError(event.target.parentNode.parentNode);
+      showCheckIcon(event.target.parentNode, true);
+      console.log(inputEmailUser);
+    }
+
+    blockButton();
+  };
 }
 
 function blockButton() {
@@ -121,4 +126,12 @@ function showError(el) {
 
 function hideError(el) {
   el.querySelector(".massageOfError").classList.add("hide");
+}
+
+function showCheckIcon(el, boolean) {
+  if (boolean) {
+    el.querySelector(".icon-ok").classList.remove("hide");
+  } else {
+    el.querySelector(".icon-ok").classList.add("hide");
+  }
 }

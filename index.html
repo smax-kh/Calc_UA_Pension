@@ -7,8 +7,8 @@
     <script src="js/index.js"></script>
     <link rel="icon" type="image/x-icon" href="img/logo.jpg" />
     <link
+      href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <title>Calculator</title>
   </head>
@@ -27,12 +27,15 @@
       <div class="inputBlock">
         <div class="divpadding nameConteiner">
           <title>Input Your Name</title>
-          <input
-            type="text"
-            name="userName"
-            placeholder="Your Name"
-            class="inputField"
-          />
+          <div class="iconInputContainer">
+            <i class="icon-ok hide"></i>
+            <input
+              type="text"
+              name="userName"
+              placeholder="Your Name"
+              class="inputField"
+            />
+          </div>
 
           <span class="massageOfError hide"> Enter valid name! </span>
         </div>
@@ -48,25 +51,33 @@
 
         <div class="divpadding yearConteiner">
           <title>Input birth year</title>
-          <input
-            type="text"
-            name="Year"
-            placeholder="Input birth year "
-            class="inputField"
-            id="yearUser"
-          />
+          <div class="iconInputContainer">
+            <i class="icon-ok hide"></i>
+            <input
+              type="text"
+              name="Year"
+              placeholder="Input birth year "
+              class="inputField"
+              id="yearUser"
+            />
+          </div>
+
           <span class="massageOfError hide"> Enter valid Year! </span>
         </div>
 
         <div class="divpadding emailContainer">
           <title>From save your calc input email adres and send letter</title>
-          <input
-            type="email"
-            name="email"
-            placeholder="Your email"
-            class="inputField"
-            id="email"
-          />
+          <div class="iconInputContainer">
+            <i class="icon-ok hide"></i>
+            <input
+              type="email"
+              name="email"
+              placeholder="Your email"
+              class="inputField"
+              id="email"
+            />
+          </div>
+
           <span class="massageOfError hide"> Enter valid Email! </span>
         </div>
 
@@ -83,14 +94,6 @@
           <span class="massageOfError hide"> Enter DATA! </span>
         </div>
       </div>
-
-      <i class="fa fa-car"></i>
-      <i class="fa fa-car" style="font-size: 48px"></i>
-      <i class="fa fa-car" style="font-size: 60px; color: red"></i>
-      <p><i class="icon-camera-retro icon-large"></i> icon-camera-retro</p>
-      <p><i class="icon-camera-retro icon-2x"></i> icon-camera-retro</p>
-      <p><i class="icon-camera-retro icon-3x"></i> icon-camera-retro</p>
-      <p><i class="icon-camera-retro icon-4x"></i> icon-camera-retro</p>
     </div>
 
     <div class="CalcConteiner hide">
