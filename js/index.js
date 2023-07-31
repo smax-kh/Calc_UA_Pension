@@ -135,3 +135,17 @@ function showCheckIcon(el, boolean) {
     el.querySelector(".icon-ok").classList.add("hide");
   }
 }
+
+const urlCurrency = "https://demo4108280.mockable.io/";
+
+window.setTimeout(function () {
+  console.log("Inside timeout ok");
+}, 2000);
+
+fetch(urlCurrency)
+  .then((respons) => {
+    return respons.json();
+  })
+  .then((data) => {
+    console.log(data);
+  });
