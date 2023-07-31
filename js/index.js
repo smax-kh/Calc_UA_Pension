@@ -18,6 +18,7 @@ window.onload = function () {
   nameParse();
   sexCheck();
   blockButton();
+  rangeYearWillWork();
 };
 
 function nameParse() {
@@ -134,6 +135,16 @@ function showCheckIcon(el, boolean) {
   } else {
     el.querySelector(".icon-ok").classList.add("hide");
   }
+}
+
+function rangeYearWillWork() {
+  let age = 0;
+  document
+    .querySelector(".sliderContainer .slider")
+    .addEventListener("input", function () {
+      age = this.value;
+      document.querySelector(".inputYearWillWork").value = age;
+    });
 }
 
 const urlCurrency = "https://demo4108280.mockable.io/";
