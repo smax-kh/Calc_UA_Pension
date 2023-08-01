@@ -13,6 +13,7 @@ function inputConteinerHide() {
 
 window.onload = function () {
   inputArray = document.querySelectorAll("input");
+  console.log(document.querySelectorAll("input"));
   yearCheck();
   emailCheck();
   nameParse();
@@ -21,7 +22,7 @@ window.onload = function () {
 
   const rangeArray = document.querySelectorAll(".sliderContainer .slider");
   rangeArray.forEach((element) => {
-    rangeInput(element);
+    rangeInputCounter(element);
   });
 };
 
@@ -141,13 +142,36 @@ function showCheckIcon(el, boolean) {
   }
 }
 
-function rangeInput(el) {
+function rangeInputCounter(el) {
+  let item = el.parentNode.parentNode.querySelector(
+    ".inputContainer .inputItem"
+  );
+  let maxValueItem = Number(el.getAttribute("max"));
+
   el.addEventListener("input", function () {
-    //  el.parentNode = this.value;
-    el.parentNode.parentNode.querySelector(
-      ".inputWithCounter .inputYearWork"
-    ).value = this.value;
+    item.value = this.value;
   });
+
+  el.parentNode.parentNode
+    .querySelector(".icon-chevron-up")
+    .addEventListener("click", function () {
+      if (Number(item.value) < maxValueItem) {
+        item.value = Number(item.value) + 1;
+      }
+    });
+
+  el.parentNode.parentNode
+    .querySelector(".icon-chevron-down")
+    .addEventListener("click", function () {
+      if (Number(item.value) > 0) {
+        item.value = Number(item.value) - 1;
+      }
+    });
+
+  item.oninput = function (event) {
+    this.value = item.value.replace(/\D/, "");
+    el.value = this.value;
+  };
 }
 
 const urlCurrency = "https://demo4108280.mockable.io/";
