@@ -175,6 +175,7 @@ function rangeInputCounter(el) {
 }
 
 const urlCurrency = "https://demo4108280.mockable.io/";
+const urlCurrencyMonoBank = "https://api.monobank.ua/bank/currency";
 
 window.setTimeout(function () {
   console.log("Inside timeout ok");
@@ -187,3 +188,9 @@ fetch(urlCurrency)
   .then((data) => {
     console.log(data);
   });
+
+fetch(urlCurrencyMonoBank).then(function (response) {
+  response.text().then(function (text) {
+    console.log(text);
+  });
+});
