@@ -3,8 +3,10 @@ let inputNameUser = "";
 let inputEmailUser = "";
 let inputSex = 0;
 let inputArray;
-let messageOutput;
-let flagButtonHide = false;
+const urlCurrency = "https://demo4108280.mockable.io/";
+const urlCurrencyMonoBank = "https://api.monobank.ua/bank/currency";
+
+let uaCurrency;
 
 function inputConteinerHide() {
   document.querySelector(".inputConteiner").classList.add("hide");
@@ -25,6 +27,21 @@ window.onload = function () {
     rangeInputCounter(element);
   });
 };
+window.setTimeout(function () {
+  sendReqvestCurrency(urlCurrencyMonoBank);
+  console.log("reqvestCurrency ok");
+}, 10000);
+
+function sendReqvestCurrency(url) {
+  fetch(url).then(function (response) {
+    response.json().then(function (data) {
+      uaCurrency = data;
+      uaCurrency.forEach((item) => {
+        console.log(item.currencyCodeA);
+      });
+    });
+  });
+}
 
 function nameParse() {
   inputArray[0].oninput = function (event) {
@@ -173,24 +190,3 @@ function rangeInputCounter(el) {
     el.value = this.value;
   };
 }
-
-const urlCurrency = "https://demo4108280.mockable.io/";
-const urlCurrencyMonoBank = "https://api.monobank.ua/bank/currency";
-
-window.setTimeout(function () {
-  console.log("Inside timeout ok");
-}, 2000);
-
-fetch(urlCurrency)
-  .then((respons) => {
-    return respons.json();
-  })
-  .then((data) => {
-    console.log(data);
-  });
-
-fetch(urlCurrencyMonoBank).then(function (response) {
-  response.text().then(function (text) {
-    console.log(text);
-  });
-});
