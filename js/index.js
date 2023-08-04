@@ -6,8 +6,6 @@ let inputArray;
 const urlCurrency = "https://demo4108280.mockable.io/";
 const urlCurrencyMonoBank = "https://api.monobank.ua/bank/currency";
 
-let uaCurrency;
-
 function inputConteinerHide() {
   document.querySelector(".inputConteiner").classList.add("hide");
   document.querySelector(".CalcConteiner").classList.remove("hide");
@@ -15,23 +13,27 @@ function inputConteinerHide() {
 
 window.onload = function () {
   inputArray = document.querySelectorAll("input");
-  console.log(document.querySelectorAll("input"));
+  //console.log(document.querySelectorAll("input"));
   yearCheck();
   emailCheck();
   nameParse();
   sexCheck();
   blockButton();
-  insertCurrency();
 
   const rangeArray = document.querySelectorAll(".sliderContainer .slider");
   rangeArray.forEach((element) => {
     rangeInputCounter(element);
   });
 };
-window.setTimeout(function () {
+// window.setTimeout(function () {
+//   sendReqvestCurrency(urlCurrencyMonoBank);
+//   console.log("reqvestCurrency ok");
+//   inputCurrensy();
+// }, 5000);
+
+document.addEventListener("DOMContentLoaded", (event) => {
   sendReqvestCurrency(urlCurrencyMonoBank);
-  console.log("reqvestCurrency ok");
-}, 5000);
+});
 
 function sendReqvestCurrency(url) {
   fetch(url).then(function (response) {
@@ -42,12 +44,16 @@ function sendReqvestCurrency(url) {
       // }
       theCurrency.forEach((item) => {
         if (item.currencyCodeA === 840 && item.currencyCodeB === 980) {
-          console.log(item.rateBuy, item.rateSell);
-          // console.log(document.querySelector(".tableRowCurrency.dollar"));
+          document.querySelector(".tableRowCurrency.dollar .sell").innerHTML =
+            item.rateSell;
+          document.querySelector(".tableRowCurrency.dollar .buy").innerHTML =
+            item.rateBuy;
         }
         if (item.currencyCodeA === 978 && item.currencyCodeB === 980) {
-          console.log(item.rateBuy, item.rateSell);
-          //console.log(document.querySelector(".tableRowCurrency.evro"));
+          document.querySelector(".tableRowCurrency.euro .sell").innerHTML =
+            item.rateSell;
+          document.querySelector(".tableRowCurrency.euro .buy").innerHTML =
+            item.rateBuy;
         }
       });
     });
