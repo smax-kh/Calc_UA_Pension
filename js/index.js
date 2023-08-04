@@ -35,9 +35,12 @@ window.setTimeout(function () {
 function sendReqvestCurrency(url) {
   fetch(url).then(function (response) {
     response.json().then(function (data) {
-      uaCurrency = data;
-      uaCurrency.forEach((item) => {
-        console.log(item.currencyCodeA);
+      let theCurrency = data;
+      // for (let key in theCurrency[0]) {
+      //   console.log(key);
+      // }
+      theCurrency.forEach((item) => {
+        console.log(item.rateCross);
       });
     });
   });
@@ -67,7 +70,6 @@ function sexCheck() {
       let radioBtns = document.getElementsByName("Sex");
       for (const radio of radioBtns) {
         if (radio.checked) {
-          console.log(radio.value);
           sexCheck = radio.value;
         }
       }
@@ -81,21 +83,21 @@ function yearCheck() {
   inputArray[3].oninput = function (event) {
     this.value = inputArray[3].value.replace(/\D/, "");
     let inputData = inputArray[3].value;
-    if (inputData.length > 3) {
-      console.log("Too LONG");
+    if (inputData.length > 4) {
+      console.log("Error Too LONG Year");
       this.value = inputData.substring(0, 4);
     }
     inputYearUser = this.value;
-    console.log(inputYearUser);
 
+    //validation
     let dateNow = new Date().getFullYear();
     if (inputYearUser < dateNow - 80 || inputYearUser > dateNow) {
       event.target.classList.add("inputRed");
-      showError(event.target.parentNode.parentNode);
+      showError(event.target.parentNode.parentNode.parentNode);
       showCheckIcon(event.target.parentNode, false);
     } else {
       event.target.classList.remove("inputRed");
-      hideError(event.target.parentNode.parentNode);
+      hideError(event.target.parentNode.parentNode.parentNode);
       showCheckIcon(event.target.parentNode, true);
     }
     blockButton();
@@ -109,14 +111,13 @@ function emailCheck() {
     if (!filter.test(inputArray[4].value)) {
       console.log("Please provide a valid email address");
       event.target.classList.add("inputRed");
-      showError(event.target.parentNode.parentNode);
+      showError(event.target.parentNode.parentNode.parentNode);
       showCheckIcon(event.target.parentNode, false);
     } else {
       event.target.classList.remove("inputRed");
       inputEmailUser = this.value;
-      hideError(event.target.parentNode.parentNode);
+      hideError(event.target.parentNode.parentNode.parentNode);
       showCheckIcon(event.target.parentNode, true);
-      console.log(inputEmailUser);
     }
 
     blockButton();
@@ -127,6 +128,13 @@ function blockButton() {
   let btn = document.querySelector(".inputFildButton");
   let divBtn = document.querySelector(".inputBtnAnim");
   let divMessage = document.querySelector(".textInsteadOfButton");
+  console.log(
+    inputNameUser === "" ? "[wait input Name]" : inputNameUser,
+    ",",
+    inputYearUser === 0 ? "[wait input Year]" : inputYearUser,
+    ",",
+    inputEmailUser === "" ? "[wait input Email]" : inputEmailUser
+  );
   if (
     document.querySelectorAll(".massageOfError.hide").length === 3 &&
     inputYearUser > 0 &&

@@ -27,56 +27,68 @@
       <h1>Pension calculator</h1>
       <div class="inputBlock">
         <div class="divpadding nameConteiner">
-          <title>Input Your Name</title>
-          <div class="iconInputContainer">
-            <i class="icon-ok hide"></i>
-            <input
-              type="text"
-              name="userName"
-              placeholder="Your Name"
-              class="inputItemUser"
-            />
-          </div>
+          <div class="tooltip">
+            <title>Input Your Name</title>
+            <div class="iconInputContainer">
+              <i class="icon-ok hide"></i>
+              <span>Input your First Name</span>
+              <input
+                type="text"
+                name="userName"
+                placeholder="Name"
+                class="inputItemUser"
+              />
+            </div>
 
-          <span class="massageOfError hide"> Enter valid name! </span>
+            <span class="massageOfError hide"> Enter valid name! </span>
+          </div>
         </div>
 
         <div class="divpadding radioButtonSex">
-          <fieldset>
-            <label>Chose Sex:</label>
-            <input type="radio" name="Sex" value="0" checked="true" />
-            <span>Male</span> <input type="radio" name="Sex" value="1" />
-            <span>Female</span>
-          </fieldset>
+          <div class="tooltip">
+            <span>Chose your Sex</span>
+            <fieldset>
+              <label>Chose Sex:</label>
+              <input type="radio" name="Sex" value="0" checked="true" />
+              Male <input type="radio" name="Sex" value="1" />
+              Female
+            </fieldset>
+          </div>
         </div>
 
         <div class="divpadding yearConteiner">
-          <title>Input birth year</title>
-          <div class="iconInputContainer">
-            <i class="icon-ok hide"></i>
-            <input
-              type="text"
-              name="Year"
-              placeholder="Input birth year "
-              class="inputItemUser"
-              id="yearUser"
-            />
+          <div class="tooltip">
+            <title>Input birth year</title>
+            <div class="iconInputContainer">
+              <i class="icon-ok hide"></i>
+              <span>Input birth year</span>
+              <input
+                type="text"
+                name="Year"
+                placeholder="Year "
+                class="inputItemUser"
+                id="yearUser"
+              />
+            </div>
           </div>
 
           <span class="massageOfError hide"> Enter valid Year! </span>
         </div>
 
         <div class="divpadding emailContainer">
-          <title>From save your calc input email adres and send letter</title>
-          <div class="iconInputContainer">
-            <i class="icon-ok hide"></i>
-            <input
-              type="email"
-              name="email"
-              placeholder="Your email"
-              class="inputItemUser"
-              id="email"
-            />
+          <div class="tooltip">
+            <title>From save your calc input email adres and send letter</title>
+            <div class="iconInputContainer">
+              <i class="icon-ok hide"></i>
+              <span> Input your email</span>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                class="inputItemUser"
+                id="email"
+              />
+            </div>
           </div>
 
           <span class="massageOfError hide"> Enter valid Email! </span>
