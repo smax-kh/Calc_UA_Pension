@@ -21,6 +21,7 @@ window.onload = function () {
   nameParse();
   sexCheck();
   blockButton();
+  insertCurrency();
 
   const rangeArray = document.querySelectorAll(".sliderContainer .slider");
   rangeArray.forEach((element) => {
@@ -30,7 +31,7 @@ window.onload = function () {
 window.setTimeout(function () {
   sendReqvestCurrency(urlCurrencyMonoBank);
   console.log("reqvestCurrency ok");
-}, 10000);
+}, 5000);
 
 function sendReqvestCurrency(url) {
   fetch(url).then(function (response) {
@@ -40,7 +41,14 @@ function sendReqvestCurrency(url) {
       //   console.log(key);
       // }
       theCurrency.forEach((item) => {
-        console.log(item.rateCross);
+        if (item.currencyCodeA === 840 && item.currencyCodeB === 980) {
+          console.log(item.rateBuy, item.rateSell);
+          // console.log(document.querySelector(".tableRowCurrency.dollar"));
+        }
+        if (item.currencyCodeA === 978 && item.currencyCodeB === 980) {
+          console.log(item.rateBuy, item.rateSell);
+          //console.log(document.querySelector(".tableRowCurrency.evro"));
+        }
       });
     });
   });

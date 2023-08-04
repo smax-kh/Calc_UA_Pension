@@ -334,6 +334,10 @@ h1 {
 }
 
 .CurrencyMonoBank {
-  display: flex;
+  display: table;
   flex-direction: column;
+}
+
+.tableRowCurrency {
+  display: table-row-group;
 }
