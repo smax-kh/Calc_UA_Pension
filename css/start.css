@@ -278,6 +278,7 @@ h1 {
 }
 
 .tooltip:hover span {
+  /*--https://codepen.io/fabriceleven/pen/KdveeO example*/
   opacity: 1;
   filter: alpha(opacity=100);
   top: -5em;
@@ -325,4 +326,14 @@ h1 {
   left: 31px;
   position: absolute;
   width: 0;
+}
+
+.svg {
+  width: 16px;
+  height: 16px;
+}
+
+.CurrencyMonoBank {
+  display: flex;
+  flex-direction: column;
 }
