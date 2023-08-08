@@ -139,8 +139,8 @@ function emailCheck() {
 }
 
 function blockButton() {
-  let btn = document.querySelector(".inputFildButton");
-  let divBtn = document.querySelector(".inputBtnAnim");
+  let btn = document.querySelector(".ButtonOk");
+  let divBtn = document.querySelector(".buttonOkDiv");
   let divMessage = document.querySelector(".textInsteadOfButton");
   console.log(
     inputNameUser === "" ? "[wait input Name]" : inputNameUser,
@@ -149,18 +149,27 @@ function blockButton() {
     ",",
     inputEmailUser === "" ? "[wait input Email]" : inputEmailUser
   );
+  console.log(
+    document.querySelectorAll(".massageOfError.hide").length === 3,
+    inputNameUser.length > 0,
+    inputYearUser > 0,
+    inputEmailUser.length > 0
+  );
   if (
-    document.querySelectorAll(".massageOfError.hide").length === 3 &&
     inputYearUser > 0 &&
     inputEmailUser.length > 0 &&
     inputNameUser.length > 0
   ) {
-    btn.style.display = "block";
-    divBtn.style.display = "flex";
+    btn.classList.remove("hide");
+    divBtn.classList.remove("hide");
     hideError(divMessage);
+    btn.classList.add("inputFildButton");
+    divBtn.classList.add("inputBtnAnim");
   } else {
-    btn.style.display = "none";
-    divBtn.style.display = "none";
+    btn.classList.add("hide");
+    divBtn.classList.add("hide");
+    btn.classList.remove("inputFildButton");
+    divBtn.classList.remove("inputBtnAnim");
     showError(divMessage);
   }
 }
