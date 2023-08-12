@@ -314,7 +314,7 @@ h1 {
   padding: 16px 15px;
   width: 240px;
   top: 2em; /*-- this is the original position of the tooltip when it's hidden */
-  left: 25em;
+  left: 125em;
   margin-left: 0;
   /*-- set opacity to 0 otherwise our animations won't work */
   opacity: 0;
@@ -348,10 +348,35 @@ h1 {
 }
 
 .CurrencyMonoBank {
-  display: table;
-  flex-direction: column;
+  border-spacing: 0;
+  border-collapse: separate;
+  width: 100%;
+  color: #314351;
+  font-size: 0.857em;
+  line-height: 1em;
+  margin-top: 20px;
+  margin-bottom: 17px;
+  font-family: "museo-sans", sans-serif;
 }
 
-.tableRowCurrency {
-  display: table-row-group;
+.CurrencyMonoBank th {
+  border: 1px solid #bcbaba;
+  border-top-color: #fff;
+  border-right: none;
+  padding: 8px 20px 8px 23px;
+  text-align: center;
+  vertical-align: middle;
+  background: #eee;
+  margin: 0;
+  color: gray;
+}
+.CurrencyMonoBank td {
+  border: 1px solid #bcbaba;
+  border-top-color: #fff;
+  border-right: none;
+  padding: 8px 20px 8px 23px;
+  text-align: center;
+  vertical-align: middle;
+  background: #eee;
+  margin: 0;
 }
