@@ -2,6 +2,13 @@ let inputYearUser = 0;
 let inputNameUser = "";
 let inputEmailUser = "";
 let inputSex = 0;
+let pension = 0;
+let age = 0;
+let salary = 0;
+let pensionAge = 0;
+let categoryCoefficient = 1;
+let seniority = 0;
+let categoryCoefBonus = 0;
 let inputArray;
 const urlCurrency = "https://demo4108280.mockable.io/";
 const urlCurrencyMonoBank = "https://api.monobank.ua/bank/currency";
@@ -9,6 +16,8 @@ const urlCurrencyMonoBank = "https://api.monobank.ua/bank/currency";
 function inputConteinerHide() {
   document.querySelector(".inputConteiner").classList.add("hide");
   document.querySelector(".CalcConteiner").classList.remove("hide");
+  foundAge();
+  calculationPension();
 }
 
 window.onload = function () {
@@ -19,46 +28,15 @@ window.onload = function () {
   nameParse();
   sexCheck();
   blockButton();
+  additionVisible();
+  categoryOfProfession();
+  calculationPension();
 
   const rangeArray = document.querySelectorAll(".sliderContainer .slider");
   rangeArray.forEach((element) => {
     rangeInputCounter(element);
   });
 };
-// window.setTimeout(function () {
-//   sendReqvestCurrency(urlCurrencyMonoBank);
-//   console.log("reqvestCurrency ok");
-//   inputCurrensy();
-// }, 5000);
-
-document.addEventListener("DOMContentLoaded", (event) => {
-  sendReqvestCurrency(urlCurrencyMonoBank);
-});
-
-function sendReqvestCurrency(url) {
-  fetch(url).then(function (response) {
-    response.json().then(function (data) {
-      let theCurrency = data;
-      // for (let key in theCurrency[0]) {
-      //   console.log(key);
-      // }
-      theCurrency.forEach((item) => {
-        if (item.currencyCodeA === 840 && item.currencyCodeB === 980) {
-          document.querySelector(".tableRowCurrency.dollar .sell").innerHTML =
-            item.rateSell;
-          document.querySelector(".tableRowCurrency.dollar .buy").innerHTML =
-            item.rateBuy;
-        }
-        if (item.currencyCodeA === 978 && item.currencyCodeB === 980) {
-          document.querySelector(".tableRowCurrency.euro .sell").innerHTML =
-            item.rateSell;
-          document.querySelector(".tableRowCurrency.euro .buy").innerHTML =
-            item.rateBuy;
-        }
-      });
-    });
-  });
-}
 
 function blockButton() {
   let btn = document.querySelector(".ButtonOk");
@@ -120,6 +98,7 @@ function rangeInputCounter(el) {
 
   el.addEventListener("input", function () {
     item.value = this.value;
+    calculationPension();
   });
 
   el.parentNode.parentNode
@@ -127,6 +106,7 @@ function rangeInputCounter(el) {
     .addEventListener("click", function () {
       if (Number(item.value) < maxValueItem) {
         item.value = Number(item.value) + 1;
+        calculationPension();
       }
     });
 
@@ -135,11 +115,63 @@ function rangeInputCounter(el) {
     .addEventListener("click", function () {
       if (Number(item.value) > 0) {
         item.value = Number(item.value) - 1;
+        calculationPension();
       }
     });
 
   item.oninput = function (event) {
     this.value = item.value.replace(/\D/, "");
     el.value = this.value;
+    calculationPension();
   };
+}
+
+function additionVisible() {
+  let el = document.querySelector(".additionButton");
+  el.addEventListener("click", () => {
+    let item = document.querySelector(".additionElementsContainer");
+    if (item.classList.contains("hide")) {
+      console.log("unhide");
+      item.classList.remove("hide");
+    } else {
+      console.log("hide");
+      item.classList.add("hide");
+    }
+  });
+}
+function foundAge() {
+  if (inputYearUser > 0) {
+    age = new Date().getFullYear() - inputYearUser;
+    console.log("age=", age);
+  }
+}
+function calculationPension() {
+  //this will be calculated pension in value
+  salary = document.querySelectorAll(".inputItem")[0].value;
+  pensionAge = document.querySelectorAll(".inputItem")[1].value;
+  seniority = document.querySelectorAll(".inputItem")[2].value;
+  document.querySelector(".textLine1Pansion").innerHTML = Math.round(
+    (((pensionAge / age) * seniority) / 35) * salary * categoryCoefficient
+  );
+  document.querySelector(".textLine1AlternativePension").innerHTML = Math.round(
+    1.05 * salary
+  );
+}
+
+function categoryOfProfession() {
+  let categoryProfession = document.querySelector(".radioContainer");
+  categoryProfession.addEventListener(
+    "click",
+    (event) => {
+      let radioBtns = document.getElementsByName("Profession");
+      for (const radio of radioBtns) {
+        if (radio.checked) {
+          categoryCoefficient = radio.value;
+          calculationPension();
+        }
+      }
+      blockButton();
+    },
+    false
+  );
 }

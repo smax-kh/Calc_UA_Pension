@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/start.css" />
     <script src="js/index.js"></script>
     <script src="js/inputValidation.js"></script>
+    <script src="js/currency.js"></script>
     <link rel="icon" type="image/x-icon" href="img/logo.jpg" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.css"
@@ -104,6 +105,12 @@
         </div>
         <div class="textInsteadOfButton">
           <span class="massageOfError hide"> Enter DATA! </span>
+        </div>
+
+        <div class="containerSpiner hide">
+          <div class="load-container">
+            <div class="linespinner"></div>
+          </div>
         </div>
 
         <table class="CurrencyMonoBank">
@@ -211,79 +218,87 @@
                 <input
                   type="radio"
                   name="Profession"
-                  value="0"
+                  value="1"
                   checked="true"
                 />
                 <span>Default</span>
-                <input type="radio" name="Profession" value="1" />
+                <input type="radio" name="Profession" value="1.1" />
                 <span>Judge</span>
               </div>
               <div>
-                <input type="radio" name="Profession" value="2" />
+                <input type="radio" name="Profession" value="1.2" />
                 <span>Entrepreneur</span>
-                <input type="radio" name="Profession" value="3" />
+                <input type="radio" name="Profession" value="1.7" />
                 <span>Military</span>
               </div>
               <div>
-                <input type="radio" name="Profession" value="4" />
+                <input type="radio" name="Profession" value="1.03" />
                 <span>State employee</span>
-                <input type="radio" name="Profession" value="5" />
+                <input type="radio" name="Profession" value="1.5" />
                 <span>Miner</span>
               </div>
             </div>
           </div>
+
           <div class="rowElement">
-            <span class="textAddition"><b>More details...</b></span>
+            <div class="additionButton">
+              <span class="iconAddition">
+                <i class="icon-chevron-down"></i>
+              </span>
+
+              <span><b> More details...</b></span>
+            </div>
           </div>
 
-          <div class="hide">
-            <div class="rowElement">
-              <span class="numberDiv">4</span>
-              <div class="textRow">
-                <span class="textLine1"><b>Total experience</b></span>
-                <span class="textLine2">year</span>
-              </div>
-              <div class="inputRow">
-                <div class="inputContainer">
-                  <input class="inputItem" type="text" value="0" />
-                  <div class="counterButton">
-                    <i class="icon-chevron-up"></i>
-                    <i class="icon-chevron-down"></i>
+          <div class="additionElementsContainer hide">
+            <div class="addition">
+              <div class="rowElement">
+                <span class="numberDiv">4</span>
+                <div class="textRow">
+                  <span class="textLine1"><b>Total seniority</b></span>
+                  <span class="textLine2">year</span>
+                </div>
+                <div class="inputRow">
+                  <div class="inputContainer">
+                    <input class="inputItem" type="text" value="30" />
+                    <div class="counterButton">
+                      <i class="icon-chevron-up"></i>
+                      <i class="icon-chevron-down"></i>
+                    </div>
+                  </div>
+                  <div class="sliderContainer">
+                    <input
+                      type="range"
+                      min="0"
+                      max="60"
+                      value="30"
+                      class="slider"
+                    />
                   </div>
                 </div>
-                <div class="sliderContainer">
-                  <input
-                    type="range"
-                    min="0"
-                    max="60"
-                    value="0"
-                    class="slider"
-                  />
-                </div>
               </div>
-            </div>
-            <div class="rowElement">
-              <span class="numberDiv">5</span>
-              <div class="textRow">
-                <span class="textLine1"><b>Total experience</b></span>
-                <span class="textLine2">year</span>
-              </div>
-              <div class="inputRow">
-                <div class="inputContainer">
-                  <input class="inputItem" type="text" value="0" />
-                  <div class="counterButton">
-                    <i class="icon-chevron-up"></i>
-                    <i class="icon-chevron-down"></i>
+              <div class="rowElement">
+                <span class="numberDiv">5</span>
+                <div class="textRow fullLine">
+                  <span class="textLine1"><b>Your category:</b></span>
+                  <div class="inputCheckField">
+                    <p>
+                      <input type="checkbox" name="checkBoxes" value="1.1" />
+                      War veteran
+                    </p>
+                    <p>
+                      <input type="checkbox" name="checkBoxes" value="1.05" />
+                      War child
+                    </p>
+                    <p>
+                      <input type="checkbox" name="checkBoxes" value="1" />
+                      Honorary donor
+                    </p>
+                    <p>
+                      <input type="checkbox" name="checkBoxes" value="1" />
+                      Special services to the homeland
+                    </p>
                   </div>
-                </div>
-                <div class="sliderContainer">
-                  <input
-                    type="range"
-                    min="0"
-                    max="60"
-                    value="0"
-                    class="slider"
-                  />
                 </div>
               </div>
             </div>
@@ -294,13 +309,13 @@
           <div class="rowElement">
             <div class="textRowResultStatic">
               <span class="textLine1"><b>Your pension will be</b></span>
-              <span class="textLine1"><b> VALUE</b></span>
+              <span class="textLine1Pansion"><b> VALUE</b></span>
             </div>
           </div>
           <div class="rowElement">
             <div class="textRowResultStatic">
               <span class="textLine1"><b>Alternative income</b></span>
-              <span class="textLine1"><b> VALUE2</b></span>
+              <span class="textLine1AlternativePension"><b> VALUE2</b></span>
             </div>
           </div>
         </div>
