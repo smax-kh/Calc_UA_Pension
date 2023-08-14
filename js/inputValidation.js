@@ -65,6 +65,7 @@ function emailCheck() {
       event.target.classList.add("inputRed");
       showError(event.target.parentNode.parentNode.parentNode);
       showCheckIcon(event.target.parentNode, false);
+      inputEmailUser = "";
     } else {
       event.target.classList.remove("inputRed");
       inputEmailUser = this.value;
