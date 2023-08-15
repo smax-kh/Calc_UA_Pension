@@ -41,11 +41,13 @@ async function reqvestCurrencyMono(url) {
       document.querySelector(".containerSpiner").classList.add("hide");
       document.querySelector(".CurrencyMonoBank").classList.remove("hide");
     } else {
-      document.querySelector(".containerSpiner").classList.remove("hide");
-      document.querySelector(".CurrencyMonoBank").classList.add("hide");
+      const er = new Error("Bad response " + response.status);
+      throw er;
     }
-  } catch (error) {
-    console.log(error);
+  } catch (er) {
+    console.log("catch " + er);
+    document.querySelector(".containerSpiner").classList.remove("hide");
+    document.querySelector(".CurrencyMonoBank").classList.add("hide");
   } finally {
     console.log("Done!");
   }
