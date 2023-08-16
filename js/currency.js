@@ -48,6 +48,7 @@ async function reqvestCurrencyMono(url) {
     console.log("catch " + er);
     document.querySelector(".containerSpiner").classList.remove("hide");
     document.querySelector(".CurrencyMonoBank").classList.add("hide");
+    let timerId = setInterval(() => console.log("need insert function"), 10000);
   } finally {
     console.log("Done!");
   }
