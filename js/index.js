@@ -139,12 +139,14 @@ function additionVisible() {
     }
   });
 }
+
 function foundAge() {
   if (inputYearUser > 0) {
     age = new Date().getFullYear() - inputYearUser;
     console.log("age=", age);
   }
 }
+
 function calculationPension() {
   //this will be calculated pension in value
   salary = document.querySelectorAll(".inputItem")[0].value;

@@ -1,5 +1,6 @@
 function setData(name, value, date) {
-  localStorage.setItem(name, Math.round(100 * value) / 100); // all data is String
+  let item = Math.round(100 * value) / 100;
+  localStorage.setItem(name, item); // all data is String
   localStorage.setItem("date", date); // all data is String
 }
 

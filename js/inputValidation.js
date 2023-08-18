@@ -15,6 +15,7 @@ function nameParse() {
     blockButton();
   };
 }
+
 function sexCheck() {
   let sexRB = document.querySelector("fieldset");
   sexRB.addEventListener(

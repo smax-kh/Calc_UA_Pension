@@ -2,7 +2,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
   if (checkDate()) {
     reqvestCurrencyMono(urlCurrencyMonoBank);
   } else {
-    insertCurrencyFormLocalStorage();
+    let timeNow = new Date();
+    let timeSave = Date.parse(getData("date"));
+
+    if (timeNow - timeSave < 300000) {
+      insertCurrencyFormLocalStorage();
+      console.log("time to requvest-->", timeNow - timeSave, "<300000");
+    } else {
+      reqvestCurrencyMono(urlCurrencyMonoBank);
+      console.log("requvest time-->", timeNow - timeSave);
+    }
   }
 });
 
