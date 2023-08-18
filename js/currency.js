@@ -1,43 +1,20 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-  reqvestCurrencyMono(urlCurrencyMonoBank);
+  if (checkDate()) {
+    reqvestCurrencyMono(urlCurrencyMonoBank);
+  } else {
+    insertCurrencyFormLocalStorage();
+  }
 });
-
-/*
-const reqvestCurrencyMono = function (url) {
-  let count = 0;
-  fetch(url).then(function (response) {
-    response.json().then(function (data) {
-      let theCurrency = data;
-      // for (let key in theCurrency[0]) {
-      //   console.log(key);
-      // }
-      theCurrency.forEach((item) => {
-        if (item.currencyCodeA === 840 && item.currencyCodeB === 980) {
-          document.querySelector(".tableRowCurrency.dollar .sell").innerHTML =
-            item.rateSell;
-          document.querySelector(".tableRowCurrency.dollar .buy").innerHTML =
-            item.rateBuy;
-        }
-        if (item.currencyCodeA === 978 && item.currencyCodeB === 980) {
-          document.querySelector(".tableRowCurrency.euro .sell").innerHTML =
-            item.rateSell;
-          document.querySelector(".tableRowCurrency.euro .buy").innerHTML =
-            item.rateBuy;
-        }
-      });
-    });
-  });
-};
-*/
 
 async function reqvestCurrencyMono(url) {
   let count = 0;
+  console.log("LocalStorage Date-->", checkDate());
   try {
     const response = await fetch(url);
     if (response.ok) {
       let data = await response.json();
       console.log("answer", data);
-      parseCurrency(data);
+      parseSaveCurrency(data);
       document.querySelector(".containerSpiner").classList.add("hide");
       document.querySelector(".CurrencyMonoBank").classList.remove("hide");
     } else {
@@ -53,20 +30,37 @@ async function reqvestCurrencyMono(url) {
     console.log("Done!");
   }
 }
-
-function parseCurrency(el) {
+//parse and save currancy from promise in local storage with Now Date
+function parseSaveCurrency(el) {
   el.forEach((item) => {
     if (item.currencyCodeA === 840 && item.currencyCodeB === 980) {
       document.querySelector(".tableRowCurrency.dollar .sell").innerHTML =
         Math.round(100 * item.rateSell) / 100;
+      setData("dollarSell", item.rateSell, new Date());
+
       document.querySelector(".tableRowCurrency.dollar .buy").innerHTML =
         Math.round(100 * item.rateBuy) / 100;
+      setData("dollarBuy", item.rateBuy, new Date());
     }
     if (item.currencyCodeA === 978 && item.currencyCodeB === 980) {
       document.querySelector(".tableRowCurrency.euro .sell").innerHTML =
         Math.round(100 * item.rateSell) / 100;
+      setData("euroSell", item.rateSell, new Date());
       document.querySelector(".tableRowCurrency.euro .buy").innerHTML =
         Math.round(100 * item.rateBuy) / 100;
+      setData("euroBuy", item.rateBuy, new Date());
     }
   });
+}
+
+function insertCurrencyFormLocalStorage() {
+  document.querySelector(".tableRowCurrency.dollar .sell").innerHTML =
+    getData("dollarSell");
+  document.querySelector(".tableRowCurrency.dollar .buy").innerHTML =
+    getData("dollarBuy");
+
+  document.querySelector(".tableRowCurrency.euro .sell").innerHTML =
+    getData("euroSell");
+  document.querySelector(".tableRowCurrency.euro .buy").innerHTML =
+    getData("euroBuy");
 }
