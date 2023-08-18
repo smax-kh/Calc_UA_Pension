@@ -17,26 +17,36 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 async function reqvestCurrencyMono(url) {
   let count = 0;
+  let intervalId = null;
   console.log("LocalStorage Date-->", checkDate());
-  try {
-    const response = await fetch(url);
-    if (response.ok) {
-      let data = await response.json();
-      console.log("answer", data);
-      parseSaveCurrency(data);
-      document.querySelector(".containerSpiner").classList.add("hide");
-      document.querySelector(".CurrencyMonoBank").classList.remove("hide");
-    } else {
-      const er = new Error("Bad response " + response.status);
-      throw er;
+  if (count <= 3) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        let data = await response.json();
+        console.log("answer", data);
+        parseSaveCurrency(data);
+        document.querySelector(".containerSpiner").classList.add("hide");
+        document.querySelector(".CurrencyMonoBank").classList.remove("hide");
+      } else {
+        const er = new Error("Bad response " + response.status);
+        throw er;
+      }
+    } catch (er) {
+      console.log("catch " + er);
+      document.querySelector(".containerSpiner").classList.remove("hide");
+      document.querySelector(".CurrencyMonoBank").classList.add("hide");
+      count++;
+      let intervalId = setInterval(
+        () => reqvestCurrencyMono(urlCurrencyMonoBank),
+        30000
+      );
+    } finally {
+      console.log("Done!");
     }
-  } catch (er) {
-    console.log("catch " + er);
-    document.querySelector(".containerSpiner").classList.remove("hide");
-    document.querySelector(".CurrencyMonoBank").classList.add("hide");
-    let timerId = setInterval(() => console.log("need insert function"), 10000);
-  } finally {
-    console.log("Done!");
+  } else {
+    clearInterval(intervalId);
+    console.log("BED REQUVEST !!!");
   }
 }
 //parse and save currancy from promise in local storage with Now Date
