@@ -37,7 +37,7 @@ async function reqvestCurrencyMono(url) {
       document.querySelector(".containerSpiner").classList.remove("hide");
       document.querySelector(".CurrencyMonoBank").classList.add("hide");
       count++;
-      let intervalId = setInterval(
+      intervalId = setInterval(
         () => reqvestCurrencyMono(urlCurrencyMonoBank),
         30000
       );
