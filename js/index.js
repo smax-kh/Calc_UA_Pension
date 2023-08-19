@@ -14,8 +14,14 @@ const urlCurrency = "https://demo4108280.mockable.io/";
 const urlCurrencyMonoBank = "https://api.monobank.ua/bank/currency";
 
 function inputConteinerHide() {
-  document.querySelector(".inputConteiner").classList.add("hide");
-  document.querySelector(".CalcConteiner").classList.remove("hide");
+  if (!document.querySelector(".inputConteiner").classList.contains("hide")) {
+    document.querySelector(".inputConteiner").classList.add("hide");
+    document.querySelector(".CalcConteiner").classList.remove("hide");
+  } else {
+    document.querySelector(".inputConteiner").classList.remove("hide");
+    document.querySelector(".CalcConteiner").classList.add("hide");
+  }
+
   foundAge();
   calculationPension();
 }
