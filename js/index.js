@@ -7,6 +7,7 @@ let age = 0;
 let salary = 0;
 let pensionAge = 0;
 let categoryCoefficient = 1;
+let categoryCoefficientAdd = 0;
 let seniority = 0;
 let categoryCoefBonus = 0;
 let inputArray;
@@ -37,6 +38,7 @@ window.onload = function () {
   additionVisible();
   categoryOfProfession();
   calculationPension();
+  checkBoxsInput();
 
   const rangeArray = document.querySelectorAll(".sliderContainer .slider");
   rangeArray.forEach((element) => {
@@ -159,7 +161,9 @@ function calculationPension() {
   pensionAge = document.querySelectorAll(".inputItem")[1].value;
   seniority = document.querySelectorAll(".inputItem")[2].value;
   document.querySelector(".textLine1Pansion").innerHTML = Math.round(
-    (((pensionAge / age) * seniority) / 35) * salary * categoryCoefficient
+    (((pensionAge / age) * seniority) / 35) *
+      salary *
+      (categoryCoefficient + categoryCoefficientAdd)
   );
   document.querySelector(".textLine1AlternativePension").innerHTML = Math.round(
     1.05 * salary
@@ -182,4 +186,31 @@ function categoryOfProfession() {
     },
     false
   );
+}
+
+function btnLeftTabClick() {
+  document.querySelector(".LeftBlockWithParam").classList.remove("hide");
+  document.querySelector(".RightBlockWithParam").classList.add("hide");
+}
+
+function btnRightTabClick() {
+  document.querySelector(".LeftBlockWithParam").classList.add("hide");
+  document.querySelector(".RightBlockWithParam").classList.remove("hide");
+}
+
+function checkBoxsInput() {
+  let obj = document.getElementsByName("checkBoxes");
+
+  obj.forEach((el) => {
+    el.addEventListener("click", (item) => {
+      if (item.target.checked) {
+        categoryCoefficientAdd +=
+          Math.round(100 * Number(item.target.value)) / 100;
+      } else {
+        categoryCoefficientAdd -=
+          Math.round(100 * Number(item.target.value)) / 100;
+      }
+      calculationPension();
+    });
+  });
 }

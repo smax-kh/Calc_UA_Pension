@@ -156,15 +156,27 @@
         Back
       </button>
       <div class="tabNameCalc">
-        <button id="btn2" type="button" value="0" class="btnActive">
+        <button
+          id="btn2"
+          type="button"
+          value="0"
+          class="btnLeftTab btnActive"
+          onclick="btnLeftTabClick()"
+        >
           Calculate your future pension
         </button>
-        <button id="btn3" type="button" value="0" class="btnNotActive">
+        <button
+          id="btn3"
+          type="button"
+          value="0"
+          class="btnRightTab btnNotActive"
+          onclick="btnRightTabClick()"
+        >
           Calculate your alternative earnings
         </button>
       </div>
 
-      <div class="blockWithParam">
+      <div class="LeftBlockWithParam">
         <div class="tableColumn">
           <div class="rowElement">
             <span class="numberDiv">1</span>
@@ -327,6 +339,19 @@
               <span class="textLine1"><b>Alternative income</b></span>
               <span class="textLine1AlternativePension"><b> VALUE2</b></span>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="RightBlockWithParam hide">
+        <div class="tableColumn">
+          <div class="rowElement">
+            <span class="numberDiv">1</span>
+            <div class="textRow">
+              <span class="textLine1"><b>Your alternative</b></span>
+              <span class="textLine2">grn/mounts</span>
+            </div>
+            <div class="inputRow"></div>
           </div>
         </div>
       </div>
