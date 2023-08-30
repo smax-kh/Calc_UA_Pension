@@ -10,26 +10,16 @@ let categoryCoefficient = 1;
 let categoryCoefficientAdd = 0;
 let seniority = 0;
 let categoryCoefBonus = 0;
-let inputArray;
+let currentCurrency = 0;
+
 const urlCurrency = "https://demo4108280.mockable.io/";
 const urlCurrencyMonoBank = "https://api.monobank.ua/bank/currency";
 
-function inputConteinerHide() {
-  if (!document.querySelector(".inputConteiner").classList.contains("hide")) {
-    document.querySelector(".inputConteiner").classList.add("hide");
-    document.querySelector(".CalcConteiner").classList.remove("hide");
-  } else {
-    document.querySelector(".inputConteiner").classList.remove("hide");
-    document.querySelector(".CalcConteiner").classList.add("hide");
-  }
-
-  foundAge();
-  calculationPension();
-}
-
 window.onload = function () {
-  inputArray = document.querySelectorAll("input");
-  //console.log(document.querySelectorAll("input"));
+  addListenersForObj();
+};
+//create Listener for objects
+function addListenersForObj() {
   yearCheck();
   emailCheck();
   nameParse();
@@ -44,7 +34,21 @@ window.onload = function () {
   rangeArray.forEach((element) => {
     rangeInputCounter(element);
   });
-};
+}
+// if click btn ok hide conteiner with input
+function inputConteinerHide() {
+  if (!document.querySelector(".inputConteiner").classList.contains("hide")) {
+    document.querySelector(".inputConteiner").classList.add("hide");
+    document.querySelector(".CalcConteiner").classList.remove("hide");
+  } else {
+    document.querySelector(".inputConteiner").classList.remove("hide");
+    document.querySelector(".CalcConteiner").classList.add("hide");
+  }
+
+  foundAge();
+  minPensionAge();
+  calculationPension();
+}
 
 function blockButton() {
   let btn = document.querySelector(".ButtonOk");
@@ -154,9 +158,8 @@ function foundAge() {
     console.log("age=", age);
   }
 }
-
+//this will be calculated pension in value
 function calculationPension() {
-  //this will be calculated pension in value
   salary = document.querySelectorAll(".inputItem")[0].value;
   pensionAge = document.querySelectorAll(".inputItem")[1].value;
   seniority = document.querySelectorAll(".inputItem")[2].value;
@@ -178,7 +181,7 @@ function categoryOfProfession() {
       let radioBtns = document.getElementsByName("Profession");
       for (const radio of radioBtns) {
         if (radio.checked) {
-          categoryCoefficient = radio.value;
+          categoryCoefficient = Number(radio.value);
           calculationPension();
         }
       }
@@ -196,6 +199,7 @@ function btnLeftTabClick() {
 function btnRightTabClick() {
   document.querySelector(".LeftBlockWithParam").classList.add("hide");
   document.querySelector(".RightBlockWithParam").classList.remove("hide");
+  selectCurrency();
 }
 
 function checkBoxsInput() {
@@ -213,4 +217,36 @@ function checkBoxsInput() {
       calculationPension();
     });
   });
+}
+
+function minPensionAge() {
+  let item = document.querySelectorAll(".slider")[1];
+  if (sexCheck == 1) {
+    item.max = 55;
+  } else {
+    item.max = 65;
+  }
+}
+
+function selectCurrency() {
+  let obj = document.querySelector(".currencyItem");
+  obj.addEventListener(
+    "click",
+    (el) => {
+      if (el.target.value === "euro") {
+        currentCurrency = getData("euroBuy");
+      } else {
+        currentCurrency = getData("dollarBuy");
+      }
+
+      if (currentCurrency == null) {
+        alert(
+          "Need ethernet connection from this action!!! curency set default 1 USD dollar = 43 hrn"
+        );
+        currentCurrency = 43;
+        setData("dollarBuy", currentCurrency, new Date());
+      }
+    },
+    false
+  );
 }

@@ -1,4 +1,5 @@
 function nameParse() {
+  let inputArray = document.querySelectorAll("input");
   inputArray[0].oninput = function (event) {
     event.stopPropagation;
     this.value = this.value.replace(/[^A-Za-zА-Яа-я ]+/g, "");
@@ -35,6 +36,7 @@ function sexCheck() {
 }
 
 function yearCheck() {
+  let inputArray = document.querySelectorAll("input");
   inputArray[3].oninput = function (event) {
     event.stopPropagation;
     this.value = inputArray[3].value.replace(/\D/, "");
@@ -61,6 +63,7 @@ function yearCheck() {
 }
 
 function emailCheck() {
+  let inputArray = document.querySelectorAll("input");
   inputArray[4].oninput = function (event) {
     event.stopPropagation;
     let filter =
