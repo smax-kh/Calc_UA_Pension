@@ -13,6 +13,7 @@ function nameParse() {
       showError(event.target.parentNode.parentNode);
       showCheckIcon(event.target.parentNode, false);
     }
+
     blockButton();
   };
 }
