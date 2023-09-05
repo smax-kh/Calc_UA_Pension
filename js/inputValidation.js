@@ -6,7 +6,9 @@ function nameParse() {
     if (this.value.length > 0) {
       event.target.classList.remove("inputRed");
       hideError(event.target.parentNode.parentNode);
-      inputNameUser = this.value;
+      //inputNameUser = this.value;
+      inputNameUser = modifyNameUperr(String(this.value));
+      this.value = inputNameUser;
       showCheckIcon(event.target.parentNode, true);
     } else {
       event.target.classList.add("inputRed");
@@ -84,4 +86,9 @@ function emailCheck() {
 
     blockButton();
   };
+}
+
+function modifyNameUperr(str) {
+  let newStr = str.charAt(0).toUpperCase() + str.slice(1, str.length);
+  return newStr;
 }

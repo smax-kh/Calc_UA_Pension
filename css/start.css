@@ -63,10 +63,10 @@ h1 {
 }
 
 .inputItemUser {
-  width: 90%;
+  width: 100%;
 }
 .inputItemUser:hover {
-  width: 90%;
+  width: 100%;
   border: 2px solid;
   border-color: #10b655;
 }
@@ -288,7 +288,7 @@ h1 {
   background: none repeat scroll 0 0 #ffffff; /*-- some basic styling */
   position: absolute;
   text-align: center;
-  width: 95%;
+  width: 100%;
   z-index: -2;
   top: -14px;
   font-family: "Helvetica";
